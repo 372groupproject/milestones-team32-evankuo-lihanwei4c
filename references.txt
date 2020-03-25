@@ -1,0 +1,12 @@
+Authors: Hanwei Li and Evan Kuo
+
+	Milestone 1 Part B:
+
+		1. The Dart Programming Language
+		2. https://dart.dev/tutorials
+		3. https://dart.dev/guides
+		4. https://www.reddits.com/dartlang
+		5. Google Ads
+		6. Hanwei and I installed the compiler on the Windows Command Prompt. We did this by going
+		   to https://gekorm.com/dart-windows/ and installing the sdk. We can then go to the Command
+		   Prompt and then run dart 'filename.dart'   
