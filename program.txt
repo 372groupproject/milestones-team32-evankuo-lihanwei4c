@@ -1,0 +1,31 @@
+Evan Kuo and Lihan Wei
+Group 32
+CSC 372
+
+
+1. Our program will implement the tic tac toe game in Dart. We hope to use an ascii interface
+that will allow the user to play tic tac toe on the command line against a simple AI bot. To make
+the program more "interesting" we can add various customization options such as varying board sizes
+or AI difficulty settings. We could also add different settings for the look of the board. For example,
+the board could uses X's and O's for one layout but then also have +'s and -'s for another layout.
+This is sort of like switching from light to dark mode in an application.
+
+2. We expect our program to not have to use any modules beyond the dart standard library. This is because
+we will have our program run on the command line so there is no need for visual libraries or 
+any libraries beyond what is provided in dart's standard library. In terms of file layout, we will probably
+use an object oriented structure where we have various files that contain the objects that support
+tic tac toe (board, pieces, AI, etc). In terms of functions we would probably have functions that support
+what each class is meant to do. For example, the AI class would probably have functions related to determining
+what move it should make.
+
+3. We expect the program to be about 500 lines of code or maybe less. It largely depends on exactly how it's written
+but if we use modularity and are reasonably efficient we should be able to implement this program in a few 
+hundred lines of code.
+
+4. We think this program will be a good illustration of the features in our language because Dart is very similar 
+to other high level programming langauges such as Java and Python and tic tac toe is a very common 
+exercise in those languages. So by doing tic tac toe in Dart we can show that Dart is just as powerful
+and dynamic and those commonly used langauges that everyone knows about.
+
+5. We also intend to add as many features as we can in the time alloted. If we have more time then we will of course
+try to add more features beyond the ones specified here. 
