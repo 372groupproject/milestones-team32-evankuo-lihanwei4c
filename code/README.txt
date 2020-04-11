@@ -23,4 +23,12 @@ Milestone 2 Part A:
 	p2_if.dart -- if/else in dart
 	p2_switch.dart -- switch statements in dart
 	p2_while.dart -- while loops in dart
+	
+--- Milestone 3 ----------------------------------------------------------------------------------------
+
+Milestone 3 Part A:
+	
+	Each of the p3_feature.dart files tests some sort of data type/operation in dart.
+	
+	
 	- 
