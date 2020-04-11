@@ -30,5 +30,11 @@ Milestone 3 Part A:
 	
 	Each of the p3_feature.dart files tests some sort of data type/operation in dart.
 	
+	p3_useful.dart -- Shows off data types in a small useful program by taking input
 	
+	p3_list. dart -- for lists 
+	p3_map.dart -- for maps
+	p3_numbers.dart -- for numbers
+	p3_set.dart -- for sets
+	p3_string.dart -- for string
 	- 
