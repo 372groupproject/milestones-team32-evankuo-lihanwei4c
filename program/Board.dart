@@ -15,7 +15,7 @@ class Board {
 
 	// Places a piece at the given position. Returns true if the piece was place successfully and false 
 	// if not (the column was full).
-	bool placePieceAt(int column, String playerOrComputer) {
+	bool placePieceAt(int row, int column, String playerOrComputer) {
 
 		int currNum = 0;
 
@@ -27,12 +27,11 @@ class Board {
 			currNum = 2;
 		}
 
-		for (int i = theBoard[0].length - 1; i >= 0; i--) {
-			if (theBoard[i][column] == 0) {
-				theBoard[i][column] = currNum;
-				return true;
-			}
+		if (theBoard[row][column] == 0) {
+			theBoard[row][column] = currNum;
+			return true;
 		}
+
 
 		return false;
 	}
