@@ -145,9 +145,9 @@ class Board {
 
 		// Check for player win vertical top right to bottom left
 		for (int i = theBoard.length - 1; i >= 0; i--) {
-			if (theBoard[i][i] == "X") {
+			if (theBoard[theBoard.length - 1 - i][i] == "X") {
 				if (i == 0) {
-					return 2;
+					return 1;
 				}
 			}
 
