@@ -45,7 +45,7 @@ class TicTacToe{
             // Check game state
             switch(board.checkGameState()){
                 // draw
-                case 0:{
+                case -1:{
                     board.printBoard();
                     print("It's a draw!\n");
                     return;
