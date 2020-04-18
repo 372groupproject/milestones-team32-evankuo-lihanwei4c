@@ -1,7 +1,10 @@
 import 'dart:io';
-import 'Player.dart;';
+import 'Player.dart';
 import 'AI.dart';
+import 'Board.dart';
+
 class TicTacToe{
+
     // Attributes
     Board board;
     AI gameAI;
@@ -20,7 +23,7 @@ class TicTacToe{
         print("Welcome to TicTacToe!\n\n");
         
         // difficulty selection
-        gameAI easyMode = yesOrNo("Please choose difficulty", "easy", "hard");
+        bool easyMode = yesOrNo("Please choose difficulty", "easy", "hard");
         
         // select player order
         players[0].isAI = yesOrNo("Is player 1 AI?", 'y', 'n');
@@ -30,12 +33,12 @@ class TicTacToe{
         int curTurn = 0;
         while(true){
             print("Player " + (curTurn + 1).toString() + "'s turn to play: ");
-            if(player[curTurn].isAI){
-                gameAI.play(player[curTurn].color, board);
+            if(players[curTurn].isAI){
+                gameAI.play(players[curTurn].color, board);
             }
             else{
                 var coord = stdin.readLineSync().split(',');
-                board.placePieceAt(int.parse(coord[0]), int.parse(coord[0]), player[curTurn].color);
+                board.placePieceAt(int.parse(coord[0]), int.parse(coord[0]), players[curTurn].color);
             }
             
             // Check game state

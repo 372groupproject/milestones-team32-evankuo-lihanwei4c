@@ -1,5 +1,5 @@
 class Player{
-    char color;
+    String color;
     bool isAI;
     Player(color, isAI){
         this.color = color;
