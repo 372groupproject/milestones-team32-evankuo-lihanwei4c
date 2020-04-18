@@ -157,16 +157,21 @@ class Board {
 		}
 
 		// Check for draw
+		bool doContinue = true;
 		for (int i = 0; i < theBoard.length; i++) {
+
 			for (int j = 0; j < theBoard.length; j++) {
 
-				if (theBoard[i][j] == "_") {
-					break;
-				}
+				if (doContinue == true) {
 
-				else {
-					if (i == theBoard.length - 1 && j == theBoard.length - 1) {
-						return -1;
+					if (theBoard[i][j] == "_") {
+						doContinue = false;
+					}
+
+					else {
+						if (i == theBoard.length - 1 && j == theBoard.length - 1) {
+							return -1;
+						}
 					}
 				}
 			}
