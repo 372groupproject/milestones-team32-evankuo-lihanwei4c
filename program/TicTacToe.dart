@@ -3,6 +3,7 @@ import 'Player.dart';
 import 'AI.dart';
 import 'Board.dart';
 class TicTacToe{
+
     // Attributes
     Board board;
     AI gameAI;
