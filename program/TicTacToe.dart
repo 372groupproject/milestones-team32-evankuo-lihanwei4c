@@ -1,6 +1,7 @@
 import 'dart:io';
-import 'Player.dart;';
+import 'Player.dart';
 import 'AI.dart';
+import 'Board.dart';
 class TicTacToe{
     // Attributes
     Board board;
@@ -17,10 +18,11 @@ class TicTacToe{
     }
     
     void gameLoop(){
-        print("Welcome to TicTacToe!\n\n");
+        board.clearBoard();
+        print("Welcome to TicTacToe!\n");
         
         // difficulty selection
-        gameAI easyMode = yesOrNo("Please choose difficulty", "easy", "hard");
+        gameAI.easyMode = yesOrNo("Please choose difficulty", "easy", "hard");
         
         // select player order
         players[0].isAI = yesOrNo("Is player 1 AI?", 'y', 'n');
@@ -29,19 +31,21 @@ class TicTacToe{
         int gameState = -1;
         int curTurn = 0;
         while(true){
+            board.printBoard();
             print("Player " + (curTurn + 1).toString() + "'s turn to play: ");
-            if(player[curTurn].isAI){
-                gameAI.play(player[curTurn].color, board);
+            if(players[curTurn].isAI){
+                print(gameAI.play(players[curTurn].color, board));
             }
             else{
-                var coord = stdin.readLineSync().split(',');
-                board.placePieceAt(int.parse(coord[0]), int.parse(coord[0]), player[curTurn].color);
+                var coord = stdin.readLineSync().split(' ');
+                board.placePieceAt(int.parse(coord[0]), int.parse(coord[1]), players[curTurn].color);
             }
             
             // Check game state
             switch(board.checkGameState()){
                 // draw
                 case 0:{
+                    board.printBoard();
                     print("It's a draw!\n");
                     return;
                 }
@@ -49,14 +53,16 @@ class TicTacToe{
                 
                 // p1 win
                 case 1:{
-                    print("Player 1 (" + players[0] + ") won!");
+                    board.printBoard();
+                    print("Player 1 (" + players[0].color + ") won!");
                     return;
                 }
                 break;
                 
                 // p2 win
                 case 2:{
-                    print("Player 2 (" + players[1] + ") won!");
+                    board.printBoard();
+                    print("Player 2 (" + players[1].color + ") won!");
                 }
                 break;
                 
@@ -76,7 +82,7 @@ class TicTacToe{
     
     bool yesOrNo(String question, String yes, String no){
         String yn = "(" + yes + "/" + no + ")";
-        print(question + yn + "\n");
+        print(question + yn);
         while(true){
             String answer = stdin.readLineSync();
             if (answer == yes){
@@ -86,9 +92,14 @@ class TicTacToe{
                 return false;
             }
             else{
-                print("Invalid answer! Please answer again " + yn + ":\n");
+                print("Invalid answer! Please answer again " + yn + ":");
             }
         }
         return false;
     }
+}
+
+void main(){
+    var game = new TicTacToe();
+    game.gameLoop();
 }

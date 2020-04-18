@@ -1,4 +1,5 @@
 import 'dart:math' show Random;
+import 'Board.dart';
 class AI{
     bool easyMode;
     
@@ -6,7 +7,7 @@ class AI{
         easyMode = true;
     }
     
-    String play(char piece, Board board){
+    String play(String piece, Board board){
         if(easyMode){
             return easyPlay(piece, board);
         }else{
@@ -14,7 +15,7 @@ class AI{
         }
     }
     
-    string easyPlay(char piece, Board board) {
+    String easyPlay(String piece, Board board) {
         Random randomizer = new Random(1);
         // find out how many empty spaces there are
         int emptySpaces = 0;
@@ -45,7 +46,7 @@ class AI{
 
     }
     
-    string hardPlay(char piece, Board board) {
+    String hardPlay(String piece, Board board) {
         int row = 0;
         int col = 0;
         int potential = 0;
@@ -104,10 +105,10 @@ class AI{
      * @param board an instance of Board where the game is played on.
      * @param x the x index of the position, an int.
      * @param y the y index of the position, an int.
-     * @param piece the piece type this function should check winning potential for, a char.
+     * @param piece the piece type this function should check winning potential for, a String.
      * @return the winning potential at the position if you place a piece there, an int.
      */
-    int check_potential(Board board, int x, int y, char piece) {
+    int check_potential(Board board, int x, int y, String piece) {
         int potentialPointRow = 0;
         int potentialPointCol = 0;
         int potentialPointDia = 0;

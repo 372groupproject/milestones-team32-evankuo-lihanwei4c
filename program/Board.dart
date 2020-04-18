@@ -1,34 +1,26 @@
 class Board {
 
 	// Internal representation for the board
-	List theBoard = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+	List theBoard = [['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']];
 
 
 	void clearBoard() {
 		for (int i = 0; i < theBoard.length; i++) {
 			for (int j = 0; j < theBoard.length; j++) {
-				theBoard[i][j] = 0;
+				theBoard[i][j] = '_';
 			}
 		}
 	}
-
+    String getPieceAt(row, col){
+        return theBoard[row][col];
+    }
 
 	// Places a piece at the given position. Returns true if the piece was place successfully and false 
 	// if not (the column was full).
-	bool placePieceAt(int row, int column, String playerOrComputer) {
+	bool placePieceAt(int row, int column, String color) {
 
-		int currNum = 0;
-
-		if (playerOrComputer.compareTo("player") == 0) {
-			currNum = 1;
-		}
-
-		else {
-			currNum = 2;
-		}
-
-		if (theBoard[row][column] == 0) {
-			theBoard[row][column] = currNum;
+		if (theBoard[row][column] == '_') {
+			theBoard[row][column] = color;
 			return true;
 		}
 
@@ -191,19 +183,7 @@ class Board {
 			String printOneRow = "";
 
 			for (int j = 0; j < theBoard[i].length; j++) {
-
-				if (theBoard[i][j] == 0) {
-					printOneRow = printOneRow + "_" + " ";
-				}
-
-				else if (theBoard[i][j] == 1) {
-					printOneRow = printOneRow + "O" + " ";
-				}
-
-				else {
-					printOneRow = printOneRow + "X" + " ";
-				}
-
+                printOneRow = printOneRow + theBoard[i][j] + " ";
 			}
 
 			print(printOneRow);
