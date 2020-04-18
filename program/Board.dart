@@ -11,6 +11,7 @@ class Board {
 			}
 		}
 	}
+
     String getPieceAt(row, col){
         return theBoard[row][col];
     }
@@ -36,7 +37,7 @@ class Board {
 		for (int i = 0; i < theBoard.length; i++) {
 			for (int j = theBoard[0].length - 1; j >= 0; j--) {
 
-				if (theBoard[j][i] == 1) {
+				if (theBoard[j][i] == 'O') {
 					if (j == 0) {
 						return 1;
 					}
@@ -53,7 +54,7 @@ class Board {
 
 			for (int j = 0; j < theBoard[0].length; j++) {
 
-				if (theBoard[i][j] == 1) {
+				if (theBoard[i][j] == "O") {
 					if (j == theBoard[0].length - 1) {
 						return 1;
 					}
@@ -67,7 +68,7 @@ class Board {
 
 		// Check for player win vertical top left to bottom right
 		for (int i = 0; i < theBoard.length; i++) {
-			if (theBoard[i][i] == 1) {
+			if (theBoard[i][i] == "O") {
 				if (i == theBoard[0].length - 1) {
 					return 1;
 				}
@@ -80,7 +81,7 @@ class Board {
 
 		// Check for player win vertical top right to bottom left
 		for (int i = theBoard.length - 1; i >= 0; i--) {
-			if (theBoard[i][i] == 1) {
+			if (theBoard[i][i] == "O") {
 				if (i == 0) {
 					return 1;
 				}
@@ -98,7 +99,7 @@ class Board {
 		for (int i = 0; i < theBoard.length; i++) {
 			for (int j = theBoard[0].length - 1; j >= 0; j--) {
 
-				if (theBoard[j][i] == 2) {
+				if (theBoard[j][i] == "X") {
 					if (j == 0) {
 						return 2;
 					}
@@ -116,7 +117,7 @@ class Board {
 
 			for (int j = 0; j < theBoard[0].length; j++) {
 
-				if (theBoard[i][j] == 2) {
+				if (theBoard[i][j] == "X") {
 					if (j == theBoard[0].length - 1) {
 						return 2;
 					}
@@ -130,7 +131,7 @@ class Board {
 
 		// Check for comp win vertical top left to bottom right
 		for (int i = 0; i < theBoard.length; i++) {
-			if (theBoard[i][i] == 2) {
+			if (theBoard[i][i] == "X") {
 				if (i == theBoard[0].length - 1) {
 					return 2;
 				}
@@ -144,7 +145,7 @@ class Board {
 
 		// Check for player win vertical top right to bottom left
 		for (int i = theBoard.length - 1; i >= 0; i--) {
-			if (theBoard[i][i] == 2) {
+			if (theBoard[i][i] == "X") {
 				if (i == 0) {
 					return 2;
 				}
@@ -157,22 +158,22 @@ class Board {
 
 		// Check for draw
 		for (int i = 0; i < theBoard.length; i++) {
-			for (int j = theBoard[0].length - 1; j >= 0; j--) {
+			for (int j = 0; j < theBoard.length; j++) {
 
-				if (theBoard[j][i] != 0) {
-					if (j == 0 && i == theBoard.length - 1) {
-						return 0;
-					}
+				if (theBoard[i][j] == "_") {
+					break;
 				}
 
 				else {
-					break;
+					if (i == theBoard.length - 1 && j == theBoard.length - 1) {
+						return -1;
+					}
 				}
 			}
 		}
 
 
-		return -1;
+		return 0;
 	}
 
 	// Print out the board
