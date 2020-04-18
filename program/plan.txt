@@ -1,0 +1,17 @@
+class Board
+
+    void ClearBoard()
+    
+    Color GetPieceAt(row, col)
+
+    void PlacePieceAt(row, col, Color)
+    
+    int checkGameState() // 0 for draw, 1 for x win, 2 for o win, -1 for not over
+    
+    void PrintBoard()
+    
+class Game
+    void GameLoop()
+    
+class AI
+    AIPlay(color, board)
