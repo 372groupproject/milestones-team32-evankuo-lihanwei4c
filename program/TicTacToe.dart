@@ -39,7 +39,10 @@ class TicTacToe{
             }
             else{
                 var coord = stdin.readLineSync().split(' ');
-                board.placePieceAt(int.parse(coord[0]), int.parse(coord[1]), players[curTurn].color);
+                if(!board.placePieceAt(int.parse(coord[0]), int.parse(coord[1]), players[curTurn].color)){
+                    print("Invalid position!");
+                    continue;
+                }
             }
             
             // Check game state
@@ -64,6 +67,7 @@ class TicTacToe{
                 case 2:{
                     board.printBoard();
                     print("Player 2 (" + players[1].color + ") won!");
+                    return;
                 }
                 break;
                 
@@ -81,26 +85,33 @@ class TicTacToe{
         
     }
     
-    bool yesOrNo(String question, String yes, String no){
-        String yn = "(" + yes + "/" + no + ")";
-        print(question + yn);
-        while(true){
-            String answer = stdin.readLineSync();
-            if (answer == yes){
-                return true;
-            }
-            else if (answer == no){
-                return false;
-            }
-            else{
-                print("Invalid answer! Please answer again " + yn + ":");
-            }
-        }
-        return false;
-    }
+
 }
 
 void main(){
     var game = new TicTacToe();
-    game.gameLoop();
+    while(true){
+        game.gameLoop();
+        if(yesOrNo("Do you want to play again?", 'y', 'n')){
+            continue;
+        }
+        break;
+    }
+}
+bool yesOrNo(String question, String yes, String no){
+    String yn = "(" + yes + "/" + no + ")";
+    print(question + yn);
+    while(true){
+        String answer = stdin.readLineSync();
+        if (answer == yes){
+            return true;
+        }
+        else if (answer == no){
+            return false;
+        }
+        else{
+            print("Invalid answer! Please answer again " + yn + ":");
+        }
+    }
+    return false;
 }
