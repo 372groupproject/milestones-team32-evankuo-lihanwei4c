@@ -2,6 +2,10 @@ import 'dart:io';
 import 'Player.dart';
 import 'AI.dart';
 import 'Board.dart';
+/* ================================================================================
+ * The game loop and main function.
+ * Author: Hanwei Li and Evan Kuo
+ *=================================================================================*/
 class TicTacToe{
 
     // Attributes
@@ -9,7 +13,7 @@ class TicTacToe{
     AI gameAI;
     List<Player> players;
     
-    // The Constructor
+    //== The Constructor. Initialize board, ai, and players =======================
     TicTacToe(){
         board = new Board();
         gameAI = new AI();
@@ -18,6 +22,13 @@ class TicTacToe{
         players[1] = new Player('X', true);
     }
     
+
+    /*-------------------------------------------------------------------------------
+     * Place the given piece on board with the current difficulty.
+     * @return "row col", a String representing the position this ai placed piece at. 
+     * @param piece - 'O' / 'X', a string representing the piece color/shape
+     * @param board - the current Board object representing the board being played on
+     *-------------------------------------------------------------------------------*/
     void gameLoop(){
         board.clearBoard();
         print("Welcome to TicTacToe!\n");
@@ -29,7 +40,6 @@ class TicTacToe{
         players[0].isAI = yesOrNo("Is player 1 AI?", 'y', 'n');
         players[1].isAI = yesOrNo("Is player 2 AI?", 'y', 'n');
         
-        int gameState = -1;
         int curTurn = 0;
         while(true){
             board.printBoard();
@@ -88,16 +98,28 @@ class TicTacToe{
 
 }
 
+//== The main function. Start a game ============================================
 void main(){
     var game = new TicTacToe();
+
+    // loop until player don't want to play anymore
     while(true){
         game.gameLoop();
+
+        // whether to play another game
         if(yesOrNo("Do you want to play again?", 'y', 'n')){
             continue;
         }
         break;
     }
 }
+/*-------------------------------------------------------------------------------
+ * Choose to answer a yes/no question, keep asking until valid answer given
+ * @return  a boolean representing the answer you chose
+ * @param question - a String representing the question being asked
+ * @param yes - a String representing the 'yes' (True) answer to the question
+ * @param no - a String representing the 'no' (False) answer to the question
+ *-------------------------------------------------------------------------------*/
 bool yesOrNo(String question, String yes, String no){
     String yn = "(" + yes + "/" + no + ")";
     print(question + yn);
@@ -113,5 +135,4 @@ bool yesOrNo(String question, String yes, String no){
             print("Invalid answer! Please answer again " + yn + ":");
         }
     }
-    return false;
 }

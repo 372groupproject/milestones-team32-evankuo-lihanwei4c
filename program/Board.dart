@@ -1,10 +1,15 @@
+/* ================================================================================
+ * The Board contains all cells (with/without piece) and functions for the manipulation
+ * or checking on it.
+ * Author: Evan Kuo and Hanwei Li
+ *=================================================================================*/
 class Board {
 
 	// Internal representation for the board
 	List theBoard = [['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']];
 
 	
-
+  // remove all pieces on the board
 	void clearBoard() {
 		for (int i = 0; i < theBoard.length; i++) {
 			for (int j = 0; j < theBoard.length; j++) {
@@ -13,9 +18,10 @@ class Board {
 		}
 	}
 
-    String getPieceAt(row, col){
-        return theBoard[row][col];
-    }
+  // return the piece at given position
+  String getPieceAt(row, col){
+      return theBoard[row][col];
+  }
 
 	// Places a piece at the given position. Returns true if the piece was place successfully and false 
 	// if not (the column was full).

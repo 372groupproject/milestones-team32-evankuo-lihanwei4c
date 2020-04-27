@@ -1,12 +1,24 @@
 import 'dart:math' show Random;
 import 'Board.dart';
+/* ================================================================================
+ * The AI with two difficulty levels (random / smart)
+ *                                   (easy   / hard)
+ * Author: Hanwei Li and Evan Kuo
+ *=================================================================================*/
 class AI{
     bool easyMode;
     
+    //== The constructor. Initialize default mode to easy ==========================
     AI(){
         easyMode = true;
     }
     
+    /*-------------------------------------------------------------------------------
+     * Place the given piece on board with the current difficulty.
+     * @return "row col", a String representing the position this ai placed piece at. 
+     * @param piece - 'O' / 'X', a string representing the piece color/shape
+     * @param board - the current Board object representing the board being played on
+     *-------------------------------------------------------------------------------*/
     String play(String piece, Board board){
         if(easyMode){
             return easyPlay(piece, board);
@@ -15,6 +27,12 @@ class AI{
         }
     }
     
+    /*-------------------------------------------------------------------------------
+     * Place the given piece on board on random position.
+     * @return "row col", a String representing the position this ai placed piece at. 
+     * @param piece - 'O' / 'X', a string representing the piece color/shape
+     * @param board - the current Board object representing the board being played on
+     *-------------------------------------------------------------------------------*/
     String easyPlay(String piece, Board board) {
         Random randomizer = new Random(1);
         // find out how many empty spaces there are
@@ -46,6 +64,12 @@ class AI{
 
     }
     
+    /*-------------------------------------------------------------------------------
+     * Place the given piece at a position that has the most benifit (potential or threat).
+     * @return "row col", a String representing the position this ai placed piece at. 
+     * @param piece - 'O' / 'X', a string representing the piece color/shape
+     * @param board - the current Board object representing the board being played on
+     *-------------------------------------------------------------------------------*/
     String hardPlay(String piece, Board board) {
         int row = 0;
         int col = 0;
@@ -100,14 +124,14 @@ class AI{
 
     }
 
-    /**
+    /*---------------------------------------------------------------------------------------
      * This function checks the winning potential of a position.
      * @param board an instance of Board where the game is played on.
      * @param x the x index of the position, an int.
      * @param y the y index of the position, an int.
      * @param piece the piece type this function should check winning potential for, a String.
      * @return the winning potential at the position if you place a piece there, an int.
-     */
+     *---------------------------------------------------------------------------------------*/
     int check_potential(Board board, int x, int y, String piece) {
         int potentialPointRow = 0;
         int potentialPointCol = 0;
