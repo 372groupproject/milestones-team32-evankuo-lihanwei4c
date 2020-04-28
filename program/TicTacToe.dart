@@ -40,7 +40,7 @@ class TicTacToe{
         players[0].isAI = yesOrNo("Is player 1 AI?", 'y', 'n');
         players[1].isAI = yesOrNo("Is player 2 AI?", 'y', 'n');
         
-        int curTurn = 0;
+        var curTurn = 0;
         while(true){
             board.printBoard();
             print("Player " + (curTurn + 1).toString() + "'s turn to play: ");
